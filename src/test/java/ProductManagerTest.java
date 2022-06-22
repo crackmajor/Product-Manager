@@ -70,7 +70,7 @@ public class ProductManagerTest {
     }
 
     @Test
-    void findTextInProductNameTest(){
+    void findTextInProductNameTest() {
         manager.addProduct(book1);
         manager.addProduct(book2);
         manager.addProduct(book3);
@@ -81,6 +81,38 @@ public class ProductManagerTest {
 
         Product[] actual = manager.searchBy("ма");
         Product[] expected = {smartphone1, smartphone2, smartphone3};
+
+        assertArrayEquals(actual, expected);
+    }
+
+    @Test
+    void findTextInProductNameTest2() {
+        manager.addProduct(book1);
+        manager.addProduct(book2);
+        manager.addProduct(book3);
+        manager.addProduct(book4);
+        manager.addProduct(smartphone1);
+        manager.addProduct(smartphone2);
+        manager.addProduct(smartphone3);
+
+        Product[] actual = manager.searchBy("Кни");
+        Product[] expected = {book1, book2, book3, book4};
+
+        assertArrayEquals(actual, expected);
+    }
+
+    @Test
+    void findTextInProductNameTest3() {
+        manager.addProduct(book1);
+        manager.addProduct(book2);
+        manager.addProduct(book3);
+        manager.addProduct(book4);
+        manager.addProduct(smartphone1);
+        manager.addProduct(smartphone2);
+        manager.addProduct(smartphone3);
+
+        Product[] actual = manager.searchBy("fdg");
+        Product[] expected = {};
 
         assertArrayEquals(actual, expected);
     }
